@@ -1,5 +1,9 @@
 # Class Instance Tracker
 
+By: Brian Tran
+
+Date: 06.21.2017
+
 ## How to Run the Program
 
 #### Requirements
@@ -37,10 +41,8 @@ AndMe 12
 Counted 5
 ```
 
-Bonus:
-
-1. For additional bonus points, consider a mechanism that does not require each class counted to inherit from a common base class.
-2. For even more bonus points, in addition to the number of instances created, also display the count of the number of instances that are still alive (i.e. reachable).
+6. For additional bonus points, consider a mechanism that does not require each class counted to inherit from a common base class.
+7. For even more bonus points, in addition to the number of instances created, also display the count of the number of instances that are still alive (i.e. reachable).
 
 ## Class View
 
@@ -63,11 +65,13 @@ The following is the list of classes used to make this:
 
 The class "ButtonInstanceTracker.cs" is a Singleton class that tracks the set of classes' instances (in this case classes that derive from BaseButton). "ButtonInstanceTracker.cs" tracks all classes that inherit from BaseButton. Derived classes of BaseButton do not need to do anything special to be tracked.
 
-#### Requirement 4 and Bonus 2
+#### Requirement 4 and 7
 
 The MainForm.cs handles dynamically generating a random amount of buttons of the four classes (CyanButton, MagentaButton, YellowButton, and BlackButton). Whenever a button is clicked, the clicked button is completely removed from the list and the tracker will update its count accordingly.
 
-#### Requirement 5 (Part 1)
+#### Requirement 5
+
+##### Sample output
 
 The MainForm.cs holds the logger, "Refresh Log" button, "Randomize Instances" button, and the Flow Layout Panel that holds all the dynamically generated buttons. When the program starts, the buttons will automatically be generated and the logger will spit out the Class name and the instances of said class like so:
 
@@ -88,6 +92,6 @@ By tracking the instances with the WeakReference class, it was very easy to trac
 
 It was easy to test tracking only alive instances by forcing the Garbage Collection before logging. This is, however, unrealistic to use in a real program, but in terms of testing whether the mechanism appropriately tracks alive instances it's a fair trade-off.
 
-#### Requirement Bonus 1
+#### Requirement 6
 
-I built another solution that required all instances to be built through a Factory, which technically solves Bonus #1 in terms of removing the dependency of deriving from a common base; however, I couldn't find a way to not allow the instantiation of the class outside of the Factory without too much complexity (i.e. setting a private constructor for the class and make the Factory instantiate it, which loses the simplicity of making sub-classes). Therefore, I kept my original design and made sure it was easily testable.
+I built another solution that required all instances to be built through a Factory, which technically solves requirement 6 in terms of removing the dependency of deriving from a common base; however, I couldn't find a way to not allow the instantiation of the class outside of the Factory without too much complexity (i.e. setting a private constructor for the class and make the Factory instantiate it, which loses the simplicity of making sub-classes). Therefore, I kept my original design and made sure it was easily testable.
